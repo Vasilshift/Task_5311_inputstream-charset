@@ -11,17 +11,13 @@ public class Main {
 
     }
     public static String readAsString(InputStream inputStream, Charset charset) throws IOException {
-        //ByteArrayOutputStream out = new ByteArrayOutputStream();
-
-        //InputStream inputStream = new InputStreamReader(inputStream, charset);
-        //inputStream = null;
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        int nRead;
-        while ((nRead = inputStream.read()) != -1) {
-
-            out.write(nRead);
+        Reader reader = new InputStreamReader(inputStream, charset);
+        StringWriter r = new StringWriter();
+        int b;
+        while ((b = reader.read()) != -1) {
+            r.write(b);
         }
-        return out.toString();
+        return r.toString();
     }
 
 
